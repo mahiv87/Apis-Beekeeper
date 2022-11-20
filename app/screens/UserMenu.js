@@ -12,6 +12,7 @@ export default function UserMenu() {
 				<MaterialCommunityIcons name="account" size={48} color="black" />
 				<Button title="Upload photo" color="secondary" />
 			</View>
+			<View></View>
 		</Screen>
 	);
 }
