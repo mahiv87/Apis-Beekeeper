@@ -85,9 +85,7 @@ export default function Profile() {
 				<FlatList
 					data={connectLinks}
 					keyExtractor={(link) => link.id.toString()}
-					renderItem={({ item }) => (
-						<Link title={item.title} icon={item.icon} link={item.link} color={item.color} />
-					)}
+					renderItem={({ item }) => <Link title={item.title} icon={item.icon} link={item.link} color={item.color} />}
 				/>
 				<View style={styles.buttonsContainer}>
 					<Button title="Share" />
@@ -100,6 +98,8 @@ export default function Profile() {
 const styles = StyleSheet.create({
 	buttonsContainer: {
 		width: '100%',
+		justifyContent: 'center',
+		alignItems: 'center',
 		padding: 20
 	},
 	container: {
