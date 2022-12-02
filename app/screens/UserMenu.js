@@ -28,8 +28,11 @@ export default function UserMenu() {
 	return (
 		<Screen>
 			<View style={[styles.buttonsContainer]}>
-				<Image source={{ uri: selectedImage }} style={styles.profilePic} />
-				{/* <MaterialCommunityIcons name="account" size={48} color="black" /> */}
+				{selectedImage !== null ? (
+					<Image source={{ uri: selectedImage }} style={styles.profilePic} />
+				) : (
+					<MaterialCommunityIcons name="account" size={48} color="black" />
+				)}
 				<Button title="Upload photo" color="secondary" onPress={pickImageAsync} />
 			</View>
 			<View></View>
@@ -46,8 +49,8 @@ const styles = StyleSheet.create({
 		padding: 20
 	},
 	profilePic: {
-		width: 80,
-		height: 80,
-		borderRadius: 40
+		width: 100,
+		height: 100,
+		borderRadius: 50
 	}
 });
