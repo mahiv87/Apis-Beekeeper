@@ -9,8 +9,9 @@ import colors from '../config/colors';
 
 export default function UserMenu() {
 	const [profilePic, setProfilePic] = useState(null);
+	const [bannerPic, setBannerPic] = useState(null);
 
-	// Function to open photo library
+	// Function to open photo library and set profile pic
 	const pickImageAsync = async () => {
 		let result = await ImagePicker.launchImageLibraryAsync({
 			allowsEditing: true,
@@ -20,6 +21,21 @@ export default function UserMenu() {
 		if (!result.canceled) {
 			console.log(result);
 			setProfilePic(result.uri);
+		} else {
+			alert('You did not select any image.');
+		}
+	};
+
+	// Function to set banner pic
+	const bannerImageAsync = async () => {
+		let result = await ImagePicker.launchImageLibraryAsync({
+			allowsEditing: true,
+			quality: 1
+		});
+
+		if (!result.canceled) {
+			console.log(result);
+			setBannerPic(result.uri);
 		} else {
 			alert('You did not select any image.');
 		}
@@ -36,12 +52,24 @@ export default function UserMenu() {
 				)}
 				<Button title="Choose photo" color="secondary" onPress={pickImageAsync} />
 			</View>
-			<View></View>
+			<Text style={styles.title}>Add banner photo</Text>
+			<View style={[styles.buttonsContainer]}>
+				{bannerPic !== null ? (
+					<Image source={{ uri: bannerPic }} style={styles.bannerPic} />
+				) : (
+					<MaterialCommunityIcons name="image-area" size={48} color="black" />
+				)}
+				<Button title="Choose photo" color="secondary" onPress={bannerImageAsync} />
+			</View>
 		</Screen>
 	);
 }
 
 const styles = StyleSheet.create({
+	bannerPic: {
+		width: 200,
+		height: 100
+	},
 	buttonsContainer: {
 		width: '100%',
 		alignItems: 'center',
