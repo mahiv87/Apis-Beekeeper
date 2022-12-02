@@ -68,7 +68,8 @@ export default function UserMenu() {
 const styles = StyleSheet.create({
 	bannerPic: {
 		width: 200,
-		height: 100
+		height: 100,
+		borderRadius: 4
 	},
 	buttonsContainer: {
 		width: '100%',
