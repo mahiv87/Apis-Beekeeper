@@ -5,10 +5,10 @@ import * as ImagePicker from 'expo-image-picker';
 
 import Screen from '../components/Screen';
 import Button from '../components/Button';
-import me from '../../assets/me.png';
+import colors from '../config/colors';
 
 export default function UserMenu() {
-	const [selectedImage, setSelectedImage] = useState(null);
+	const [profilePic, setProfilePic] = useState(null);
 
 	// Function to open photo library
 	const pickImageAsync = async () => {
@@ -19,7 +19,7 @@ export default function UserMenu() {
 
 		if (!result.canceled) {
 			console.log(result);
-			setSelectedImage(result.uri);
+			setProfilePic(result.uri);
 		} else {
 			alert('You did not select any image.');
 		}
@@ -27,13 +27,14 @@ export default function UserMenu() {
 
 	return (
 		<Screen>
+			<Text style={styles.title}>Add profile photo</Text>
 			<View style={[styles.buttonsContainer]}>
-				{selectedImage !== null ? (
-					<Image source={{ uri: selectedImage }} style={styles.profilePic} />
+				{profilePic !== null ? (
+					<Image source={{ uri: profilePic }} style={styles.profilePic} />
 				) : (
 					<MaterialCommunityIcons name="account" size={48} color="black" />
 				)}
-				<Button title="Upload photo" color="secondary" onPress={pickImageAsync} />
+				<Button title="Choose photo" color="secondary" onPress={pickImageAsync} />
 			</View>
 			<View></View>
 		</Screen>
@@ -46,11 +47,19 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center',
 		flexDirection: 'row',
-		padding: 20
+		padding: 20,
+		borderBottomWidth: 2,
+		borderBottomColor: colors.light
 	},
 	profilePic: {
 		width: 100,
 		height: 100,
 		borderRadius: 50
+	},
+	title: {
+		fontSize: 16,
+		textAlign: 'center',
+		marginTop: 10,
+		fontStyle: 'italic'
 	}
 });
