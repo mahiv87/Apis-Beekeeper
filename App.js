@@ -4,12 +4,14 @@ import { StyleSheet, Text, View } from 'react-native';
 import WelcomeScreen from './app/screens/WelcomeScreen';
 import Profile from './app/screens/Profile';
 import UserMenu from './app/screens/UserMenu';
+import LoginScreen from './app/screens/LoginScreen';
 
 export default function App() {
 	return (
-		<WelcomeScreen />
+		// <WelcomeScreen />
 		// <Profile />
 		// <UserMenu />
+		<LoginScreen />
 	);
 }
 

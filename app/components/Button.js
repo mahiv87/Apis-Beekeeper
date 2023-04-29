@@ -17,11 +17,11 @@ function Button({ title, onPress, color = 'black' }) {
 const styles = StyleSheet.create({
 	button: {
 		backgroundColor: colors.primary,
-		borderRadius: 25,
+		borderRadius: 10,
 		justifyContent: 'center',
 		alignItems: 'center',
 		padding: 15,
-		margin: 5
+		marginVertical: 5
 	},
 	text: {
 		color: colors.white,

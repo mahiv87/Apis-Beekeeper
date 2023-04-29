@@ -1,4 +1,11 @@
-import { StyleSheet, Text, Image, View, FlatList, ScrollView } from 'react-native';
+import {
+	StyleSheet,
+	Text,
+	Image,
+	View,
+	FlatList,
+	ScrollView
+} from 'react-native';
 import React from 'react';
 
 import colors from '../config/colors';
@@ -77,15 +84,28 @@ export default function Profile() {
 	return (
 		<Screen>
 			<View style={styles.container}>
-				<Image style={styles.headerPhoto} source={require('../../assets/sprague.jpg')} />
-				<Image style={styles.profilePhoto} source={require('../../assets/me.png')} />
+				<Image
+					style={styles.headerPhoto}
+					source={require('../assets/sprague.jpg')}
+				/>
+				<Image
+					style={styles.profilePhoto}
+					source={require('../assets/me.png')}
+				/>
 				<Text style={styles.title}>Marcus Herrera</Text>
 				<Text style={styles.subTitle}>Full Stack Developer</Text>
 				<Contact email="maherreraiv1987@gmail.com" phone="512-269-5432" />
 				<FlatList
 					data={connectLinks}
 					keyExtractor={(link) => link.id.toString()}
-					renderItem={({ item }) => <Link title={item.title} icon={item.icon} link={item.link} color={item.color} />}
+					renderItem={({ item }) => (
+						<Link
+							title={item.title}
+							icon={item.icon}
+							link={item.link}
+							color={item.color}
+						/>
+					)}
 				/>
 				<View style={styles.buttonsContainer}>
 					<Button title="Share" />
