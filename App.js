@@ -7,9 +7,9 @@ import UserMenu from './app/screens/UserMenu';
 
 export default function App() {
 	return (
-		// <WelcomeScreen />
+		<WelcomeScreen />
 		// <Profile />
-		<UserMenu />
+		// <UserMenu />
 	);
 }
 
