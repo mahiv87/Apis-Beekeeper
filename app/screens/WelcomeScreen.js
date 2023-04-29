@@ -11,8 +11,8 @@ export default function WelcomeScreen() {
 		<Screen style={styles.container}>
 			{/* <Text style={styles.text}>BeeBee</Text> */}
 			<View style={styles.logoContainer}>
-				<Image style={styles.logo} source={require('../../assets/logo.jpg')} />
-				<Text style={styles.tagline}>Buzz with the sweetest hive</Text>
+				<Image style={styles.logo} source={require('../assets/logo.jpg')} />
+				<Text style={styles.tagline}>buzz with the sweetest hive</Text>
 			</View>
 			<View style={styles.buttonsContainer}>
 				<Button title="Login" />

@@ -9,18 +9,18 @@
 		"web": "expo start --web"
 	},
 	"dependencies": {
+		"@expo/vector-icons": "^13.0.0",
+		"@expo/webpack-config": "^0.17.2",
 		"expo": "~46.0.9",
 		"expo-app-loading": "~2.1.0",
+		"expo-constants": "~13.2.4",
 		"expo-font": "~10.2.0",
+		"expo-image-picker": "~13.3.1",
 		"expo-status-bar": "~1.4.0",
+		"formik": "^2.1.4",
 		"react": "18.0.0",
 		"react-native": "0.69.6",
-		"expo-constants": "~13.2.4",
-		"@expo/webpack-config": "^0.17.2",
-		"@expo/vector-icons": "^13.0.0",
-		"expo-image-picker": "~13.3.1",
-		"yup": "^0.28.5",
-		"formik": "^2.1.4"
+		"yup": "^0.28.5"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.12.9"
