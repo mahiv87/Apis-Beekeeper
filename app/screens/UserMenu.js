@@ -5,6 +5,8 @@ import * as ImagePicker from 'expo-image-picker';
 
 import Screen from '../components/Screen';
 import Button from '../components/Button';
+import ImageInput from '../components/ImageInput';
+
 import colors from '../config/colors';
 
 export default function UserMenu() {
@@ -18,7 +20,7 @@ export default function UserMenu() {
 			quality: 1
 		});
 
-		if (!result.canceled) {
+		if (!result.cancelled) {
 			console.log(result);
 			setProfilePic(result.uri);
 		} else {
@@ -33,7 +35,7 @@ export default function UserMenu() {
 			quality: 1
 		});
 
-		if (!result.canceled) {
+		if (!result.cancelled) {
 			console.log(result);
 			setBannerPic(result.uri);
 		} else {
@@ -44,23 +46,33 @@ export default function UserMenu() {
 	return (
 		<Screen>
 			<Text style={styles.title}>Add profile photo</Text>
-			<View style={[styles.buttonsContainer]}>
+			<ImageInput iconName="account" />
+			{/* <View style={[styles.buttonsContainer]}>
 				{profilePic !== null ? (
 					<Image source={{ uri: profilePic }} style={styles.profilePic} />
 				) : (
 					<MaterialCommunityIcons name="account" size={48} color="black" />
 				)}
-				<Button title="Choose photo" color="secondary" onPress={pickImageAsync} />
-			</View>
+				<Button
+					title="Choose photo"
+					color="secondary"
+					onPress={pickImageAsync}
+				/>
+			</View> */}
 			<Text style={styles.title}>Add banner photo</Text>
-			<View style={[styles.buttonsContainer]}>
+			<ImageInput iconName="image-area" />
+			{/* <View style={[styles.buttonsContainer]}>
 				{bannerPic !== null ? (
 					<Image source={{ uri: bannerPic }} style={styles.bannerPic} />
 				) : (
 					<MaterialCommunityIcons name="image-area" size={48} color="black" />
 				)}
-				<Button title="Choose photo" color="secondary" onPress={bannerImageAsync} />
-			</View>
+				<Button
+					title="Choose photo"
+					color="secondary"
+					onPress={bannerImageAsync}
+				/>
+			</View> */}
 		</Screen>
 	);
 }
