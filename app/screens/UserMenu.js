@@ -1,11 +1,18 @@
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, View } from 'react-native';
 import React, { useState } from 'react';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
 
 import Screen from '../components/Screen';
 import Button from '../components/Button';
-import ImageInput from '../components/ImageInput';
+import {
+	Form,
+	FormField,
+	FormPicker as Picker,
+	SubmitButton
+} from '../components/forms';
+import FormImagePicker from '../components/forms/FormImagePicker';
+import Text from '../components/Text';
 
 import colors from '../config/colors';
 
@@ -43,59 +50,61 @@ export default function UserMenu() {
 		}
 	};
 
+	// ==============================================================
+	const [uploadVisible, setUploadVisible] = useState(false);
+	const [progress, setProgress] = useState(0);
+
+	const handleSubmit = async (listing, { resetForm }) => {
+		setProgress(0);
+		setUploadVisible(true);
+		const result = await listingsApi.addListing(
+			{ ...listing, location },
+			(progress) => setProgress(progress)
+		);
+
+		if (!result.ok) {
+			setUploadVisible(false);
+			return alert('Could not save the listing...');
+		}
+
+		resetForm();
+	};
+
 	return (
-		<Screen>
-			<Text style={styles.title}>Add profile photo</Text>
-			<ImageInput iconName="account" />
-			{/* <View style={[styles.buttonsContainer]}>
-				{profilePic !== null ? (
-					<Image source={{ uri: profilePic }} style={styles.profilePic} />
-				) : (
-					<MaterialCommunityIcons name="account" size={48} color="black" />
-				)}
-				<Button
-					title="Choose photo"
-					color="secondary"
-					onPress={pickImageAsync}
-				/>
-			</View> */}
-			<Text style={styles.title}>Add banner photo</Text>
-			<ImageInput iconName="image-area" />
-			{/* <View style={[styles.buttonsContainer]}>
-				{bannerPic !== null ? (
-					<Image source={{ uri: bannerPic }} style={styles.bannerPic} />
-				) : (
-					<MaterialCommunityIcons name="image-area" size={48} color="black" />
-				)}
-				<Button
-					title="Choose photo"
-					color="secondary"
-					onPress={bannerImageAsync}
-				/>
-			</View> */}
+		<Screen style={styles.container}>
+			{/* <UploadScreen
+				onDone={() => setUploadVisible(false)}
+				progress={progress}
+				visible={uploadVisible}
+			/> */}
+			<Form
+				initialValues={{
+					platform: '',
+					link: '',
+					image: []
+				}}
+				onSubmit={handleSubmit}
+				// validationSchema={validationSchema}
+			>
+				<View>
+					<Text>Avatar</Text>
+					<FormImagePicker name="images" />
+				</View>
+				<View>
+					<Text>Banner</Text>
+					<FormImagePicker name="images" />
+				</View>
+				<FormField maxLength={255} name="platform" placeholder="Platform" />
+				<FormField maxLength={255} name="link" placeholder="Link" />
+				<SubmitButton title="Submit" />
+			</Form>
 		</Screen>
 	);
 }
 
 const styles = StyleSheet.create({
-	bannerPic: {
-		width: 200,
-		height: 100,
-		borderRadius: 4
-	},
-	buttonsContainer: {
-		width: '100%',
-		alignItems: 'center',
-		justifyContent: 'center',
-		flexDirection: 'row',
-		padding: 20,
-		borderBottomWidth: 2,
-		borderBottomColor: colors.light
-	},
-	profilePic: {
-		width: 100,
-		height: 100,
-		borderRadius: 50
+	container: {
+		padding: 10
 	},
 	title: {
 		fontSize: 16,
