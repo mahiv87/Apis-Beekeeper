@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 
 import WelcomeScreen from './app/screens/WelcomeScreen';
-import Profile from './app/screens/Profile';
+import ProfileScreen from './app/screens/ProfileScreen';
 import UserMenu from './app/screens/UserMenu';
 import LoginScreen from './app/screens/LoginScreen';
 import RegisterScreen from './app/screens/RegisterScreen';
@@ -10,10 +10,10 @@ import RegisterScreen from './app/screens/RegisterScreen';
 export default function App() {
 	return (
 		// <WelcomeScreen />
-		// <Profile />
-		// <UserMenu />
+		// <ProfileScreen />
+		<UserMenu />
 		// <LoginScreen />
-		<RegisterScreen />
+		// <RegisterScreen />
 	);
 }
 
