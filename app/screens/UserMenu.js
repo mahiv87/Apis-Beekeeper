@@ -13,8 +13,73 @@ import {
 } from '../components/forms';
 import FormImagePicker from '../components/forms/FormImagePicker';
 import Text from '../components/Text';
+import PlatformPickerItem from '../components/PlatformPickerItem';
 
 import colors from '../config/colors';
+
+const platforms = [
+	{
+		backgroundColor: '#1da1f2',
+		icon: 'twitter',
+		label: 'Twitter',
+		value: 1
+	},
+	{
+		backgroundColor: '#0e76a8',
+		icon: 'linkedin',
+		label: 'LinkedIn',
+		value: 2
+	},
+	{
+		backgroundColor: '#171515',
+		icon: 'github',
+		label: 'GitHub',
+		value: 3
+	},
+	{
+		backgroundColor: '#c4302b',
+		icon: 'youtube',
+		label: 'Youtube',
+		value: 4
+	},
+	{
+		backgroundColor: '#000',
+		icon: 'steam',
+		label: 'Steam',
+		value: 5
+	},
+	{
+		backgroundColor: '#6441a5',
+		icon: 'twitch',
+		label: 'Twitch',
+		value: 6
+	},
+	{
+		backgroundColor: '#7289da',
+		icon: 'discord',
+		label: 'Discord',
+		value: 7
+	},
+	{
+		backgroundColor: '#E1306C',
+		icon: 'instagram',
+		label: 'Instagram',
+		value: 8
+	},
+	{
+		backgroundColor: '#FFFC00',
+		iconColor: '#000',
+		icon: 'snapchat',
+		label: 'Snapchat',
+		value: 9
+	},
+	{
+		backgroundColor: '#000',
+		icon: 'collage',
+		label: 'Other',
+		value: 9
+	}
+];
 
 export default function UserMenu() {
 	const [profilePic, setProfilePic] = useState(null);
@@ -94,7 +159,14 @@ export default function UserMenu() {
 					<Text>Banner</Text>
 					<FormImagePicker name="images" />
 				</View>
-				<FormField maxLength={255} name="platform" placeholder="Platform" />
+				<Picker
+					items={platforms}
+					name="platform"
+					numberOfColumns={3}
+					PickerItemComponent={PlatformPickerItem}
+					placeholder="Platform"
+					width="50%"
+				/>
 				<FormField maxLength={255} name="link" placeholder="Link" />
 				<SubmitButton title="Submit" />
 			</Form>
