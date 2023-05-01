@@ -6,6 +6,7 @@ import ProfileScreen from './app/screens/ProfileScreen';
 import UserMenu from './app/screens/UserMenu';
 import LoginScreen from './app/screens/LoginScreen';
 import RegisterScreen from './app/screens/RegisterScreen';
+import UploadScreen from './app/screens/UploadScreen';
 
 export default function App() {
 	return (
@@ -14,6 +15,7 @@ export default function App() {
 		<UserMenu />
 		// <LoginScreen />
 		// <RegisterScreen />
+		// <UploadScreen />
 	);
 }
 

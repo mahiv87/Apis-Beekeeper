@@ -14,6 +14,7 @@ import {
 import FormImagePicker from '../components/forms/FormImagePicker';
 import Text from '../components/Text';
 import PlatformPickerItem from '../components/PlatformPickerItem';
+import UploadScreen from './UploadScreen';
 
 import colors from '../config/colors';
 
@@ -122,9 +123,8 @@ export default function UserMenu() {
 	const handleSubmit = async (listing, { resetForm }) => {
 		setProgress(0);
 		setUploadVisible(true);
-		const result = await listingsApi.addListing(
-			{ ...listing, location },
-			(progress) => setProgress(progress)
+		const result = await listingsApi.addListing({ ...listing }, (progress) =>
+			setProgress(progress)
 		);
 
 		if (!result.ok) {
@@ -137,11 +137,11 @@ export default function UserMenu() {
 
 	return (
 		<Screen style={styles.container}>
-			{/* <UploadScreen
+			<UploadScreen
 				onDone={() => setUploadVisible(false)}
 				progress={progress}
 				visible={uploadVisible}
-			/> */}
+			/>
 			<Form
 				initialValues={{
 					platform: '',
