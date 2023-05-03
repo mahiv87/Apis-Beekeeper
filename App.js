@@ -12,9 +12,9 @@ export default function App() {
 	return (
 		// <WelcomeScreen />
 		// <ProfileScreen />
-		<UserMenu />
+		// <UserMenu />
 		// <LoginScreen />
-		// <RegisterScreen />
+		<RegisterScreen />
 		// <UploadScreen />
 	);
 }
