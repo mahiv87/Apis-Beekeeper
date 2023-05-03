@@ -58,7 +58,8 @@ const styles = StyleSheet.create({
 	background: {
 		flex: 1,
 		justifyContent: 'flex-end',
-		alignItems: 'center'
+		alignItems: 'center',
+		padding: 20
 	},
 	bee: {
 		width: 250,
