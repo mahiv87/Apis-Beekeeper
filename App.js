@@ -11,10 +11,10 @@ import UploadScreen from './app/screens/UploadScreen';
 export default function App() {
 	return (
 		// <WelcomeScreen />
-		// <ProfileScreen />
+		<ProfileScreen />
 		// <UserMenu />
 		// <LoginScreen />
-		<RegisterScreen />
+		// <RegisterScreen />
 		// <UploadScreen />
 	);
 }
