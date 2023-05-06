@@ -1,5 +1,6 @@
 import { Image, StyleSheet, View } from 'react-native';
 import React, { useState } from 'react';
+import * as Yup from 'yup';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
 
@@ -17,6 +18,12 @@ import PlatformPickerItem from '../components/PlatformPickerItem';
 import UploadScreen from './UploadScreen';
 
 import colors from '../config/colors';
+
+const validationSchema = Yup.object().shape({
+	platform: Yup.object().required().label('Platform'),
+	link: Yup.string().required().label('Link'),
+	images: Yup.array()
+});
 
 const platforms = [
 	{
@@ -83,38 +90,38 @@ const platforms = [
 ];
 
 export default function UserMenu() {
-	const [profilePic, setProfilePic] = useState(null);
-	const [bannerPic, setBannerPic] = useState(null);
+	// const [profilePic, setProfilePic] = useState(null);
+	// const [bannerPic, setBannerPic] = useState(null);
 
-	// Function to open photo library and set profile pic
-	const pickImageAsync = async () => {
-		let result = await ImagePicker.launchImageLibraryAsync({
-			allowsEditing: true,
-			quality: 1
-		});
+	// // Function to open photo library and set profile pic
+	// const pickImageAsync = async () => {
+	// 	let result = await ImagePicker.launchImageLibraryAsync({
+	// 		allowsEditing: true,
+	// 		quality: 1
+	// 	});
 
-		if (!result.cancelled) {
-			console.log(result);
-			setProfilePic(result.uri);
-		} else {
-			alert('You did not select any image.');
-		}
-	};
+	// 	if (!result.cancelled) {
+	// 		console.log(result);
+	// 		setProfilePic(result.uri);
+	// 	} else {
+	// 		alert('You did not select any image.');
+	// 	}
+	// };
 
-	// Function to set banner pic
-	const bannerImageAsync = async () => {
-		let result = await ImagePicker.launchImageLibraryAsync({
-			allowsEditing: true,
-			quality: 1
-		});
+	// // Function to set banner pic
+	// const bannerImageAsync = async () => {
+	// 	let result = await ImagePicker.launchImageLibraryAsync({
+	// 		allowsEditing: true,
+	// 		quality: 1
+	// 	});
 
-		if (!result.cancelled) {
-			console.log(result);
-			setBannerPic(result.uri);
-		} else {
-			alert('You did not select any image.');
-		}
-	};
+	// 	if (!result.cancelled) {
+	// 		console.log(result);
+	// 		setBannerPic(result.uri);
+	// 	} else {
+	// 		alert('You did not select any image.');
+	// 	}
+	// };
 
 	// ==============================================================
 	const [uploadVisible, setUploadVisible] = useState(false);
@@ -149,7 +156,7 @@ export default function UserMenu() {
 					image: []
 				}}
 				onSubmit={handleSubmit}
-				// validationSchema={validationSchema}
+				validationSchema={validationSchema}
 			>
 				<View>
 					<Text>Avatar</Text>
@@ -168,7 +175,7 @@ export default function UserMenu() {
 					width="50%"
 				/>
 				<FormField maxLength={255} name="link" placeholder="Link" />
-				<SubmitButton title="Submit" />
+				<SubmitButton title="Save" />
 			</Form>
 		</Screen>
 	);
