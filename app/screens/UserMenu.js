@@ -183,7 +183,8 @@ export default function UserMenu() {
 
 const styles = StyleSheet.create({
 	container: {
-		padding: 10
+		padding: 10,
+		margin: 20
 	},
 	title: {
 		fontSize: 16,
