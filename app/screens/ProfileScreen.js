@@ -84,10 +84,15 @@ export default function Profile() {
 	return (
 		<Screen>
 			<View style={styles.container}>
-				<Image
-					style={styles.headerPhoto}
-					source={require('../assets/sprague.jpg')}
-				/>
+				<View style={styles.headerContainer}>
+					<Image
+						style={styles.headerPhoto}
+						source={require('../assets/sprague.jpg')}
+					/>
+					<View style={styles.editButton}>
+						<Button title="Edit" />
+					</View>
+				</View>
 				<Image
 					style={styles.profilePhoto}
 					source={require('../assets/me.png')}
@@ -126,9 +131,17 @@ const styles = StyleSheet.create({
 		flex: 1,
 		marginVertical: 20
 	},
+	headerContainer: {
+		position: 'relative'
+	},
 	headerPhoto: {
 		width: '100%',
 		height: 200
+	},
+	editButton: {
+		position: 'absolute',
+		top: 10,
+		right: 10
 	},
 	profilePhoto: {
 		width: 100,

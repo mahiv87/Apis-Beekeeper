@@ -168,7 +168,7 @@ export default function UserMenu() {
 					width="50%"
 				/>
 				<FormField maxLength={255} name="link" placeholder="Link" />
-				<SubmitButton title="Submit" />
+				<SubmitButton title="Save" />
 			</Form>
 		</Screen>
 	);
