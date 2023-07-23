@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Image, ImageBackground, View } from 'react-native';
 import * as Yup from 'yup';
 
@@ -9,8 +9,26 @@ import {
 	SubmitButton,
 	ErrorMessage
 } from '../components/forms';
+import authApi from '../api/auth';
+import useAuth from '../auth/useAuth';
+
+const validationSchema = Yup.object().shape({
+	email: Yup.string().required().email().label('Email'),
+	password: Yup.string().required().min(4).label('Password')
+});
 
 function LoginScreen(props) {
+	const { login } = useAuth();
+	const [loginFailed, setLoginFailed] = useState(false);
+
+	const handleSubmit = async ({ email, password }) => {
+		const result = await authApi.login(email, password);
+
+		if (!result.ok) return setLoginFailed(true);
+		setLoginFailed(false);
+		login(result.data);
+	};
+
 	return (
 		<ImageBackground
 			source={require('../assets/login-background.png')}
@@ -18,14 +36,18 @@ function LoginScreen(props) {
 			blurRadius={5}
 		>
 			<Screen style={styles.container}>
-				<Form>
-					{/* <ErrorMessage
-					error="Invalid email and/or password"
-					visible={loginFailed}
-				/> */}
-					<View>
-						<Image style={styles.bee} source={require('../assets/bee.png')} />
-					</View>
+				<View>
+					<Image style={styles.bee} source={require('../assets/bee.png')} />
+				</View>
+				<Form
+					initialValues={{ email: '', password: '' }}
+					onSubmit={handleSubmit}
+					validationSchema={validationSchema}
+				>
+					<ErrorMessage
+						error="Invalid email and/or password"
+						visible={loginFailed}
+					/>
 					<View>
 						<FormField
 							autoCapitalize="none"

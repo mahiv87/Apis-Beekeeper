@@ -51,9 +51,11 @@ export default function App() {
 	}
 
 	return (
-		<NavigationContainer ref={navigationRef} onReady={onLayoutRootView}>
-			<AuthNavigator />
-		</NavigationContainer>
+		<AuthContext.Provider value={{ user, setUser }}>
+			<NavigationContainer ref={navigationRef} onReady={onLayoutRootView}>
+				{user ? <ProfileScreen /> : <AuthNavigator />}
+			</NavigationContainer>
+		</AuthContext.Provider>
 		// <WelcomeScreen />
 		// <ProfileScreen />
 		// <UserMenu />
