@@ -20,7 +20,10 @@ export default function WelcomeScreen({ navigation }) {
 					title="Login"
 					onPress={() => navigation.navigate(routes.LOGIN)}
 				/>
-				<Button title="Register" />
+				<Button
+					title="Register"
+					onPress={() => navigation.navigate(routes.REGISTER)}
+				/>
 			</View>
 		</Screen>
 	);
