@@ -5,18 +5,25 @@ import Constants from 'expo-constants';
 import colors from '../config/colors';
 import Button from '../components/Button';
 import Screen from '../components/Screen';
+import routes from '../navigation/routes';
 
-export default function WelcomeScreen() {
+export default function WelcomeScreen({ navigation }) {
 	return (
 		<Screen style={styles.container}>
 			{/* <Text style={styles.text}>BeeBee</Text> */}
 			<View style={styles.logoContainer}>
-				<Image style={styles.logo} source={require('../assets/logo.jpg')} />
+				<Image style={styles.bee} source={require('../assets/bee.png')} />
 				<Text style={styles.tagline}>buzz with the sweetest hive</Text>
 			</View>
 			<View style={styles.buttonsContainer}>
-				<Button title="Login" />
-				<Button title="Register" />
+				<Button
+					title="Login"
+					onPress={() => navigation.navigate(routes.LOGIN)}
+				/>
+				<Button
+					title="Register"
+					onPress={() => navigation.navigate(routes.REGISTER)}
+				/>
 			</View>
 		</Screen>
 	);
@@ -29,6 +36,13 @@ const styles = StyleSheet.create({
 		height: '100%',
 		justifyContent: 'flex-end',
 		alignItems: 'center'
+	},
+	bee: {
+		width: 250,
+		height: 250,
+		alignSelf: 'center',
+		marginTop: 50,
+		marginBottom: 20
 	},
 	buttonsContainer: {
 		padding: 20,
