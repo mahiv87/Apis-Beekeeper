@@ -1,4 +1,4 @@
-import { StyleSheet, Text, Image, View } from 'react-native';
+import { StyleSheet, Text, Image, ImageBackground, View } from 'react-native';
 import React from 'react';
 import Constants from 'expo-constants';
 
@@ -9,23 +9,29 @@ import routes from '../navigation/routes';
 
 export default function WelcomeScreen({ navigation }) {
 	return (
-		<Screen style={styles.container}>
-			{/* <Text style={styles.text}>BeeBee</Text> */}
-			<View style={styles.logoContainer}>
-				<Image style={styles.bee} source={require('../assets/bee.png')} />
-				<Text style={styles.tagline}>buzz with the sweetest hive</Text>
-			</View>
-			<View style={styles.buttonsContainer}>
-				<Button
-					title="Login"
-					onPress={() => navigation.navigate(routes.LOGIN)}
-				/>
-				<Button
-					title="Register"
-					onPress={() => navigation.navigate(routes.REGISTER)}
-				/>
-			</View>
-		</Screen>
+		<ImageBackground
+			source={require('../assets/login-background.png')}
+			style={styles.background}
+			blurRadius={5}
+		>
+			<Screen style={styles.container}>
+				{/* <Text style={styles.text}>BeeBee</Text> */}
+				<View style={styles.logoContainer}>
+					<Image style={styles.bee} source={require('../assets/bee.png')} />
+					<Text style={styles.tagline}>buzz with the sweetest hive</Text>
+				</View>
+				<View style={styles.buttonsContainer}>
+					<Button
+						title="Login"
+						onPress={() => navigation.navigate(routes.LOGIN)}
+					/>
+					<Button
+						title="Register"
+						onPress={() => navigation.navigate(routes.REGISTER)}
+					/>
+				</View>
+			</Screen>
+		</ImageBackground>
 	);
 }
 
@@ -36,6 +42,12 @@ const styles = StyleSheet.create({
 		height: '100%',
 		justifyContent: 'flex-end',
 		alignItems: 'center'
+	},
+	background: {
+		flex: 1,
+		justifyContent: 'flex-end',
+		alignItems: 'center',
+		padding: 20
 	},
 	bee: {
 		width: 250,
