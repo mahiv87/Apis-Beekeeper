@@ -5,8 +5,9 @@ import Constants from 'expo-constants';
 import colors from '../config/colors';
 import Button from '../components/Button';
 import Screen from '../components/Screen';
+import routes from '../navigation/routes';
 
-export default function WelcomeScreen() {
+export default function WelcomeScreen({ navigation }) {
 	return (
 		<Screen style={styles.container}>
 			{/* <Text style={styles.text}>BeeBee</Text> */}
@@ -15,7 +16,10 @@ export default function WelcomeScreen() {
 				<Text style={styles.tagline}>buzz with the sweetest hive</Text>
 			</View>
 			<View style={styles.buttonsContainer}>
-				<Button title="Login" />
+				<Button
+					title="Login"
+					onPress={() => navigation.navigate(routes.LOGIN)}
+				/>
 				<Button title="Register" />
 			</View>
 		</Screen>
