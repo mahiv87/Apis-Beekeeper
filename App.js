@@ -10,8 +10,8 @@ import UploadScreen from './app/screens/UploadScreen';
 
 export default function App() {
 	return (
-		// <WelcomeScreen />
-		<ProfileScreen />
+		<WelcomeScreen />
+		// <ProfileScreen />
 		// <UserMenu />
 		// <LoginScreen />
 		// <RegisterScreen />
