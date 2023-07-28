@@ -13,8 +13,9 @@ import Screen from '../components/Screen';
 import Button from '../components/Button';
 import Link from '../components/Link';
 import Contact from '../components/Contact';
+import routes from '../navigation/routes';
 
-export default function Profile() {
+export default function Profile({ navigation }) {
 	const contactInfo = [
 		{
 			email: 'maherreraiv1987@gmail.com',
@@ -90,7 +91,10 @@ export default function Profile() {
 						source={require('../assets/sprague.jpg')}
 					/>
 					<View style={styles.editButton}>
-						<Button title="Edit" />
+						<Button
+							title="Edit"
+							onPress={() => navigation.navigate(routes.EDIT)}
+						/>
 					</View>
 				</View>
 				<Image
@@ -136,7 +140,7 @@ const styles = StyleSheet.create({
 	},
 	headerPhoto: {
 		width: '100%',
-		height: 200
+		height: 150
 	},
 	editButton: {
 		position: 'absolute',
