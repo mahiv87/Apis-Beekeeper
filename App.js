@@ -14,6 +14,7 @@ import AuthContext from './app/auth/context';
 import authStorage from './app/auth/storage';
 import { navigationRef } from './app/navigation/rootNavigation';
 import AuthNavigator from './app/navigation/AuthNavigator';
+import ProfileNavigator from './app/navigation/ProfileNavigator';
 
 export default function App() {
 	const [user, setUser] = useState();
@@ -53,7 +54,8 @@ export default function App() {
 	return (
 		<AuthContext.Provider value={{ user, setUser }}>
 			<NavigationContainer ref={navigationRef} onReady={onLayoutRootView}>
-				{user ? <ProfileScreen /> : <AuthNavigator />}
+				{/* {user ? <ProfileScreen /> : <AuthNavigator />} */}
+				<ProfileNavigator />
 			</NavigationContainer>
 		</AuthContext.Provider>
 		// <WelcomeScreen />
