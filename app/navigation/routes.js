@@ -1,5 +1,6 @@
 export default Object.freeze({
 	LOGIN: 'Login',
 	REGISTER: 'Register',
-	EDIT: 'Edit'
+	EDIT: 'Edit',
+	SHARE: 'Share'
 });
