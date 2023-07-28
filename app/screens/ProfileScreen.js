@@ -117,7 +117,10 @@ export default function Profile({ navigation }) {
 					)}
 				/>
 				<View style={styles.buttonsContainer}>
-					<Button title="Share" />
+					<Button
+						title="Share"
+						onPress={() => navigation.navigate(routes.SHARE)}
+					/>
 				</View>
 			</View>
 		</Screen>
